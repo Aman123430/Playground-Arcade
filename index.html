@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Playground Arcade</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="background-animations">
+    <div class="bubble bubble-1"></div>
+    <div class="bubble bubble-2"></div>
+    <div class="bubble bubble-3"></div>
+  </div>
+
+  <main class="app-shell">
+    <header class="app-header">
+      <div class="header-content">
+        <div class="header-text">
+          <h1>Playground Arcade</h1>
+          <p>Choose a game from the menu below and start playing!</p>
+        </div>
+        <div class="theme-selector">
+          <button class="theme-btn" data-theme="purple" title="Purple Theme">
+            <span class="theme-preview" style="background: linear-gradient(135deg, #bb86fc, #03dac6);"></span>
+          </button>
+          <button class="theme-btn" data-theme="blue" title="Blue Theme">
+            <span class="theme-preview" style="background: linear-gradient(135deg, #4fc3f7, #29b6f6);"></span>
+          </button>
+          <button class="theme-btn" data-theme="green" title="Green Theme">
+            <span class="theme-preview" style="background: linear-gradient(135deg, #66bb6a, #26a69a);"></span>
+          </button>
+          <button class="theme-btn" data-theme="orange" title="Orange Theme">
+            <span class="theme-preview" style="background: linear-gradient(135deg, #ff9800, #ff5722);"></span>
+          </button>
+          <button class="theme-btn" data-theme="pink" title="Pink Theme">
+            <span class="theme-preview" style="background: linear-gradient(135deg, #f48fb1, #ec407a);"></span>
+          </button>
+          <button class="theme-btn" data-theme="red" title="Red Theme">
+            <span class="theme-preview" style="background: linear-gradient(135deg, #ef5350, #e53935);"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Game Menu -->
+    <section id="game-menu" class="game-menu">
+      <div class="menu-grid">
+        <button class="menu-card" data-game="tic-tac-toe">
+          <div class="menu-icon">❌⭕</div>
+          <h3>Tic Tac Toe</h3>
+          <p>2 players · Classic X vs O</p>
+        </button>
+        <button class="menu-card" data-game="rps">
+          <div class="menu-icon">✊✋✌️</div>
+          <h3>Rock Paper Scissors</h3>
+          <p>1-2 players · Beat the computer</p>
+        </button>
+        <button class="menu-card" data-game="memory">
+          <div class="menu-icon">🍉🍋</div>
+          <h3>Memory Match</h3>
+          <p>Solo · Flip and find pairs</p>
+        </button>
+        <button class="menu-card" data-game="guess-number">
+          <div class="menu-icon">🔢</div>
+          <h3>Guess the Number</h3>
+          <p>Solo · Guess between 1-100</p>
+        </button>
+        <button class="menu-card" data-game="color-match">
+          <div class="menu-icon">🎨</div>
+          <h3>Color Match</h3>
+          <p>Solo · Match the color name</p>
+        </button>
+        <button class="menu-card" data-game="reaction">
+          <div class="menu-icon">⚡</div>
+          <h3>Reaction Time</h3>
+          <p>Solo · Test your reflexes</p>
+        </button>
+        <button class="menu-card" data-game="simon">
+          <div class="menu-icon">🎵</div>
+          <h3>Simon Says</h3>
+          <p>Solo · Remember the pattern</p>
+        </button>
+        <button class="menu-card" data-game="word-scramble">
+          <div class="menu-icon">📝</div>
+          <h3>Word Scramble</h3>
+          <p>Solo · Unscramble the word</p>
+        </button>
+        <button class="menu-card" data-game="dice">
+          <div class="menu-icon">🎲</div>
+          <h3>Dice Roller</h3>
+          <p>1-4 players · Roll and compete</p>
+        </button>
+        <button class="menu-card" data-game="whack">
+          <div class="menu-icon">🐹</div>
+          <h3>Whack-a-Mole</h3>
+          <p>Solo · Click the moles!</p>
+        </button>
+        <button class="menu-card" data-game="math">
+          <div class="menu-icon">➕➖✖️</div>
+          <h3>Math Quiz</h3>
+          <p>Solo · Solve problems fast</p>
+        </button>
+        <button class="menu-card" data-game="snake">
+          <div class="menu-icon">🐍</div>
+          <h3>Snake</h3>
+          <p>Solo · Classic snake game</p>
+        </button>
+        <button class="menu-card" data-game="typing">
+          <div class="menu-icon">⌨️</div>
+          <h3>Typing Speed Test</h3>
+          <p>Solo · Test your WPM</p>
+        </button>
+        <button class="menu-card" data-game="connect">
+          <div class="menu-icon">🔴🟡</div>
+          <h3>Connect Four</h3>
+          <p>2 players · Connect 4 to win</p>
+        </button>
+        <button class="menu-card" data-game="hangman">
+          <div class="menu-icon">🔤</div>
+          <h3>Hangman</h3>
+          <p>Solo · Guess the word</p>
+        </button>
+        <button class="menu-card" data-game="quiz">
+          <div class="menu-icon">❓</div>
+          <h3>Quiz Trivia</h3>
+          <p>Solo · Test your knowledge</p>
+        </button>
+        <button class="menu-card" data-game="pong">
+          <div class="menu-icon">🏓</div>
+          <h3>Pong</h3>
+          <p>1-2 players · Classic paddle</p>
+        </button>
+        <button class="menu-card" data-game="clicker">
+          <div class="menu-icon">👆</div>
+          <h3>Clicker Game</h3>
+          <p>Solo · Click as fast as you can</p>
+        </button>
+        <button class="menu-card" data-game="t2048">
+          <div class="menu-icon">2️⃣0️⃣4️⃣8️⃣</div>
+          <h3>2048</h3>
+          <p>Solo · Combine tiles to 2048</p>
+        </button>
+      </div>
+    </section>
+
+    <!-- Game Container (hidden by default) -->
+    <section id="game-container" class="game-container" style="display: none;">
+      <div class="game-header-bar">
+        <button id="back-to-menu" class="back-btn">← Back to Menu</button>
+        <h2 id="current-game-title"></h2>
+      </div>
+      <div id="active-game" class="active-game">
+        <div class="game-loading">
+          <div class="loading-spinner"></div>
+          <p>Loading game...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hidden games storage -->
+    <section class="games-storage" style="display: none;">
+      <!-- Tic Tac Toe -->
+      <article class="game-card" id="tic-tac-toe-card">
+        <header class="game-header">
+          <h2>Tic Tac Toe</h2>
+          <p class="game-subtitle">2 players · Classic X vs O</p>
+        </header>
+        <div class="game-body">
+          <div class="status-row">
+            <span id="ttt-status">Player X's turn</span>
+          </div>
+          <div class="ttt-grid" id="ttt-grid">
+            <button class="ttt-cell" data-index="0"></button>
+            <button class="ttt-cell" data-index="1"></button>
+            <button class="ttt-cell" data-index="2"></button>
+            <button class="ttt-cell" data-index="3"></button>
+            <button class="ttt-cell" data-index="4"></button>
+            <button class="ttt-cell" data-index="5"></button>
+            <button class="ttt-cell" data-index="6"></button>
+            <button class="ttt-cell" data-index="7"></button>
+            <button class="ttt-cell" data-index="8"></button>
+          </div>
+        </div>
+        <footer class="game-footer">
+          <button class="primary-btn" id="ttt-restart">Restart</button>
+        </footer>
+      </article>
+
+      <!-- Rock Paper Scissors -->
+      <article class="game-card" id="rps-card">
+        <header class="game-header">
+          <h2>Rock · Paper · Scissors</h2>
+          <p class="game-subtitle">1–2 players · Beat the computer</p>
+        </header>
+        <div class="game-body">
+          <div class="status-row">
+            <span id="rps-status">Choose your move.</span>
+          </div>
+          <div class="rps-controls">
+            <button class="chip-btn" data-move="rock">Rock</button>
+            <button class="chip-btn" data-move="paper">Paper</button>
+            <button class="chip-btn" data-move="scissors">Scissors</button>
+          </div>
+          <div class="rps-results">
+            <div>
+              <h3>You</h3>
+              <p id="rps-player-move">-</p>
+            </div>
+            <div>
+              <h3>Computer</h3>
+              <p id="rps-computer-move">-</p>
+            </div>
+          </div>
+          <div class="score-row">
+            <span>Score: </span>
+            <span id="rps-score">0 : 0</span>
+          </div>
+        </div>
+        <footer class="game-footer">
+          <button class="primary-btn" id="rps-restart">Restart</button>
+        </footer>
+      </article>
+
+      <!-- Memory Match -->
+      <article class="game-card" id="memory-card">
+        <header class="game-header">
+          <h2>Memory Match</h2>
+          <p class="game-subtitle">Solo · Flip and find pairs</p>
+        </header>
+        <div class="game-body">
+          <div class="status-row">
+            <span id="memory-status">Find all the pairs in as few moves as possible.</span>
+          </div>
+          <div class="memory-grid" id="memory-grid"></div>
+          <div class="score-row">
+            <span>Moves: </span>
+            <span id="memory-moves">0</span>
+          </div>
+        </div>
+        <footer class="game-footer">
+          <button class="primary-btn" id="memory-restart">Restart</button>
+        </footer>
+      </article>
+
+      <!-- Guess the Number -->
+      <article class="game-card" id="guess-number-card">
+        <header class="game-header">
+          <h2>Guess the Number</h2>
+          <p class="game-subtitle">Solo · Guess between 1-100</p>
+        </header>
+        <div class="game-body">
+          <div class="status-row">
+            <span id="guess-status">I'm thinking of a number between 1 and 100.</span>
+          </div>
+          <div class="guess-controls">
+            <input type="number" id="guess-input" min="1" max="100" placeholder="Enter your guess" />
+            <button class="chip-btn" id="guess-submit">Guess</button>
+          </div>
+          <div class="score-row">
+            <span>Attempts: </span>
+            <span id="guess-attempts">0</span>
+          </div>
+        </div>
+        <footer class="game-footer">
+          <button class="primary-btn" id="guess-restart">New Game</button>
+        </footer>
+      </article>
+
+      <!-- Color Match -->
+      <article class="game-card" id="color-match-card">
+        <header class="game-header">
+          <h2>Color Match</h2>
+          <p class="game-subtitle">Solo · Match the color name</p>
+        </header>
+        <div class="game-body">
+          <div class="status-row">
+            <span id="color-status">Click the color that matches the text!</span>
+          </div>
+          <div id="color-word" class="color-word">RED</div>
+          <div class="color-grid">
+            <button class="color-btn" data-color="red" style="background: #ff6b6b;"></button>
+            <button class="color-btn" data-color="blue" style="background: #4ecdc4;"></button>
+            <button class="color-btn" data-color="green" style="background: #95e1d3;"></button>
+            <button class="color-btn" data-color="yellow" style="background: #ffe66d;"></button>
+          </div>
+          <div class="score-row">
+            <span>Score: </span>
+            <span id="color-score">0</span>
+          </div>
+        </div>
+        <footer class="game-footer">
+          <button class="primary-btn" id="color-restart">Restart</button>
+        </footer>
+      </article>
+
+      <!-- Reaction Time -->
+      <article class="game-card" id="reaction-card">
+        <header class="game-header">
+          <h2>Reaction Time</h2>
+          <p class="game-subtitle">Solo · Test your reflexes</p>
+        </header>
+        <div class="game-body">
+          <div class="status-row">
+            <span id="reaction-status">Click "Start" and wait for green!</span>
+          </div>
+          <div id="reaction-box" class="reaction-box"></div>
+          <div class="score-row">
+            <span>Best: </span>
+            <span id="reaction-best">- ms</span>
+          </div>
+        </div>
+        <footer class="game-footer">
+          <button class="primary-btn" id="reaction-start">Start</button>
+        </footer>
+      </article>
+
+      <!-- Simon Says -->
+      <article class="game-card" id="simon-card">
+        <header class="game-header">
+          <h2>Simon Says</h2>
+          <p class="game-subtitle">Solo · Remember the pattern</p>
+        </header>
+        <div class="game-body">
+          <div class="status-row">
+            <span id="simon-status">Click Start to begin!</span>
+          </div>
+          <div class="simon-grid">
+            <button class="simon-btn" data-index="0" style="background: linear-gradient(135deg, #ff6b6b, #ff8787);"></button>
+            <button class="simon-btn" data-index="1" style="background: linear-gradient(135deg, #4ecdc4, #6ee7db);"></button>
+            <button class="simon-btn" data-index="2" style="background: linear-gradient(135deg, #ffe66d, #ffed8e);"></button>
+            <button class="simon-btn" data-index="3" style="background: linear-gradient(135deg, #95e1d3, #b0ebe0);"></button>
+          </div>
+          <div class="score-row">
+            <span>Level: </span>
+            <span id="simon-level">0</span>
+          </div>
+        </div>
+        <footer class="game-footer">
+          <button class="primary-btn" id="simon-start">Start</button>
+        </footer>
+      </article>
+
+      <!-- Word Scramble -->
+      <article class="game-card" id="word-scramble-card">
+        <header class="game-header">
+          <h2>Word Scramble</h2>
+          <p class="game-subtitle">Solo · Unscramble the word</p>
+        </header>
+        <div class="game-body">
+          <div class="status-row">
+            <span id="scramble-status">Unscramble the letters!</span>
+          </div>
+          <div id="scramble-word" class="scramble-word">ELPPA</div>
+          <div class="guess-controls">
+            <input type="text" id="scramble-input" placeholder="Type your answer" />
+            <button class="chip-btn" id="scramble-submit">Submit</button>
+          </div>
+          <div class="score-row">
+            <span>Score: </span>
+            <span id="scramble-score">0</span>
+          </div>
+        </div>
+        <footer class="game-footer">
+          <button class="primary-btn" id="scramble-skip">Skip</button>
+        </footer>
+      </article>
+
+      <!-- Dice Roller -->
+      <article class="game-card" id="dice-card">
+        <header class="game-header">
+          <h2>Dice Roller</h2>
+          <p class="game-subtitle">1-4 players · Roll and compete</p>
+        </header>
+        <div class="game-body">
+          <div class="status-row">
+            <span id="dice-status">Roll the dice and get the highest!</span>
+          </div>
+          <div class="dice-display">
+            <div class="dice" id="dice-1">🎲</div>
+            <div class="dice" id="dice-2">🎲</div>
+          </div>
+          <div class="score-row">
+            <span>Total: </span>
+            <span id="dice-total">0</span>
+          </div>
+          <div class="score-row">
+            <span>High Score: </span>
+            <span id="dice-high">0</span>
+          </div>
+        </div>
+        <footer class="game-footer">
+          <button class="primary-btn" id="dice-roll">Roll Dice</button>
+        </footer>
+      </article>
+
+      <!-- Whack-a-Mole -->
+      <article class="game-card" id="whack-card">
+        <header class="game-header">
+          <h2>Whack-a-Mole</h2>
+          <p class="game-subtitle">Solo · Click the moles!</p>
+        </header>
+        <div class="game-body">
+          <div class="status-row">
+            <span id="whack-status">Click Start to begin!</span>
+          </div>
+          <div class="whack-grid" id="whack-grid">
+            <button class="whack-hole" data-index="0"></button>
+            <button class="whack-hole" data-index="1"></button>
+            <button class="whack-hole" data-index="2"></button>
+            <button class="whack-hole" data-index="3"></button>
+            <button class="whack-hole" data-index="4"></button>
+            <button class="whack-hole" data-index="5"></button>
+            <button class="whack-hole" data-index="6"></button>
+            <button class="whack-hole" data-index="7"></button>
+            <button class="whack-hole" data-index="8"></button>
+          </div>
+          <div class="score-row">
+            <span>Score: </span>
+            <span id="whack-score">0</span>
+          </div>
+          <div class="score-row">
+            <span>Time: </span>
+            <span id="whack-time">30s</span>
+          </div>
+        </div>
+        <footer class="game-footer">
+          <button class="primary-btn" id="whack-start">Start</button>
+        </footer>
+      </article>
+
+      <!-- Math Quiz -->
+      <article class="game-card" id="math-card">
+        <header class="game-header">
+          <h2>Math Quiz</h2>
+          <p class="game-subtitle">Solo · Solve problems fast</p>
+        </header>
+        <div class="game-body">
+          <div class="status-row">
+            <span id="math-status">Solve the equation!</span>
+          </div>
+          <div id="math-question" class="math-question">5 + 3 = ?</div>
+          <div class="guess-controls">
+            <input type="number" id="math-input" placeholder="Answer" />
+            <button class="chip-btn" id="math-submit">Submit</button>
+          </div>
+          <div class="score-row">
+            <span>Score: </span>
+            <span id="math-score">0</span>
+          </div>
+          <div class="score-row">
+            <span>Streak: </span>
+            <span id="math-streak">0</span>
+          </div>
+        </div>
+        <footer class="game-footer">
+          <button class="primary-btn" id="math-restart">New Game</button>
+        </footer>
+      </article>
+
+      <!-- Snake -->
+      <article class="game-card" id="snake-card">
+        <header class="game-header">
+          <h2>Snake</h2>
+          <p class="game-subtitle">Solo · Classic snake game</p>
+        </header>
+        <div class="game-body">
+          <div class="status-row">
+            <span id="snake-status">Use arrow keys to move!</span>
+          </div>
+          <canvas id="snake-canvas" width="240" height="240"></canvas>
+          <div class="score-row">
+            <span>Score: </span>
+            <span id="snake-score">0</span>
+          </div>
+          <div class="score-row">
+            <span>High Score: </span>
+            <span id="snake-high">0</span>
+          </div>
+        </div>
+        <footer class="game-footer">
+          <button class="primary-btn" id="snake-start">Start</button>
+        </footer>
+      </article>
+
+      <!-- Typing Speed Test -->
+      <article class="game-card" id="typing-card">
+        <header class="game-header">
+          <h2>Typing Speed Test</h2>
+          <p class="game-subtitle">Solo · Test your WPM</p>
+        </header>
+        <div class="game-body">
+          <div class="status-row">
+            <span id="typing-status">Type the text below!</span>
+          </div>
+          <div id="typing-text" class="typing-text">The quick brown fox jumps over the lazy dog</div>
+          <textarea id="typing-input" placeholder="Start typing here..."></textarea>
+          <div class="score-row">
+            <span>WPM: </span>
+            <span id="typing-wpm">0</span>
+          </div>
+          <div class="score-row">
+            <span>Accuracy: </span>
+            <span id="typing-accuracy">100%</span>
+          </div>
+        </div>
+        <footer class="game-footer">
+          <button class="primary-btn" id="typing-restart">New Test</button>
+        </footer>
+      </article>
+
+      <!-- Connect Four -->
+      <article class="game-card" id="connect-card">
+        <header class="game-header">
+          <h2>Connect Four</h2>
+          <p class="game-subtitle">2 players · Connect 4 to win</p>
+        </header>
+        <div class="game-body">
+          <div class="status-row">
+            <span id="connect-status">Red's turn</span>
+          </div>
+          <div class="connect-grid" id="connect-grid"></div>
+        </div>
+        <footer class="game-footer">
+          <button class="primary-btn" id="connect-restart">Restart</button>
+        </footer>
+      </article>
+
+      <!-- Hangman -->
+      <article class="game-card" id="hangman-card">
+        <header class="game-header">
+          <h2>Hangman</h2>
+          <p class="game-subtitle">Solo · Guess the word</p>
+        </header>
+        <div class="game-body">
+          <div class="status-row">
+            <span id="hangman-status">Guess a letter!</span>
+          </div>
+          <div id="hangman-word" class="hangman-word">_ _ _ _ _</div>
+          <div id="hangman-letters" class="hangman-letters"></div>
+          <div class="score-row">
+            <span>Lives: </span>
+            <span id="hangman-lives">❤️❤️❤️❤️❤️❤️</span>
+          </div>
+        </div>
+        <footer class="game-footer">
+          <button class="primary-btn" id="hangman-restart">New Word</button>
+        </footer>
+      </article>
+
+      <!-- Quiz Trivia -->
+      <article class="game-card" id="quiz-card">
+        <header class="game-header">
+          <h2>Quiz Trivia</h2>
+          <p class="game-subtitle">Solo · Test your knowledge</p>
+        </header>
+        <div class="game-body">
+          <div class="status-row">
+            <span id="quiz-status">Choose the correct answer!</span>
+          </div>
+          <div id="quiz-question" class="quiz-question">What is the capital of France?</div>
+          <div id="quiz-options" class="quiz-options"></div>
+          <div class="score-row">
+            <span>Score: </span>
+            <span id="quiz-score">0 / 0</span>
+          </div>
+        </div>
+        <footer class="game-footer">
+          <button class="primary-btn" id="quiz-next">Next Question</button>
+        </footer>
+      </article>
+
+      <!-- Pong -->
+      <article class="game-card" id="pong-card">
+        <header class="game-header">
+          <h2>Pong</h2>
+          <p class="game-subtitle">1-2 players · Classic paddle</p>
+        </header>
+        <div class="game-body">
+          <div class="status-row">
+            <span id="pong-status">Use W/S and ↑/↓ keys</span>
+          </div>
+          <canvas id="pong-canvas" width="300" height="200"></canvas>
+          <div class="score-row">
+            <span>Score: </span>
+            <span id="pong-score">0 : 0</span>
+          </div>
+        </div>
+        <footer class="game-footer">
+          <button class="primary-btn" id="pong-start">Start</button>
+        </footer>
+      </article>
+
+      <!-- Clicker Game -->
+      <article class="game-card" id="clicker-card">
+        <header class="game-header">
+          <h2>Clicker Game</h2>
+          <p class="game-subtitle">Solo · Click as fast as you can</p>
+        </header>
+        <div class="game-body">
+          <div class="status-row">
+            <span id="clicker-status">Click Start for 10 seconds!</span>
+          </div>
+          <button id="clicker-button" class="clicker-button">CLICK ME!</button>
+          <div class="score-row">
+            <span>Clicks: </span>
+            <span id="clicker-count">0</span>
+          </div>
+          <div class="score-row">
+            <span>Best: </span>
+            <span id="clicker-best">0</span>
+          </div>
+        </div>
+        <footer class="game-footer">
+          <button class="primary-btn" id="clicker-start">Start</button>
+        </footer>
+      </article>
+
+      <!-- 2048 -->
+      <article class="game-card" id="t2048-card">
+        <header class="game-header">
+          <h2>2048</h2>
+          <p class="game-subtitle">Solo · Combine tiles to 2048</p>
+        </header>
+        <div class="game-body">
+          <div class="status-row">
+            <span id="t2048-status">Use arrow keys to slide!</span>
+          </div>
+          <div id="t2048-grid" class="t2048-grid"></div>
+          <div class="score-row">
+            <span>Score: </span>
+            <span id="t2048-score">0</span>
+          </div>
+          <div class="score-row">
+            <span>Best: </span>
+            <span id="t2048-best">0</span>
+          </div>
+        </div>
+        <footer class="game-footer">
+          <button class="primary-btn" id="t2048-restart">New Game</button>
+        </footer>
+      </article>
+    </section>
+
+    <footer class="app-footer">
+      <p>Tip: Click any game card to start playing. Use the back button to return to the menu.</p>
+    </footer>
+  </main>
+
+  <button id="scroll-to-top" class="scroll-btn" aria-label="Scroll to top">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
